@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENGIGUIDE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+  <div class="flex flex-col">
+    <header class="text-gray-600 body-font">
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/bot.html">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+            viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="ml-3 text-xl">Tailblocks</span>
+        </a>
+        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+          <a class="mr-5 hover:text-gray-900">First Link</a>
+          <a class="mr-5 hover:text-gray-900">Second Link</a>
+          <a class="mr-5 hover:text-gray-900">Third Link</a>
+          <a class="mr-5 hover:text-gray-900">Fourth Link</a>
+        </nav>
+        <a href="/login.html"
+          class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Login
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </header>
+  </div>
+  <div class="flex-grow flex items-center justify-center h-screen">
+    <div class="relative overflow-hidden rounded-md border border-gray-300 bg-white w-2/3 h-3/4">
+      <iframe class="w-full h-full" style="border: 5px;" srcdoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
+          <script>
+            window.botpressWebChat.init({
+              'composerPlaceholder': 'WRITE YOUR PROMPT HERE',
+              'botConversationDescription': 'I AM YOUR ASSISTANCE HOW CAN I HELP YOU TODAY ?',
+              'botName': 'ENGIGUIDE',
+              'botId': '6ebd462e-d4c4-4a85-92c8-a466db63aa24',
+              'hostUrl': 'https://cdn.botpress.cloud/webchat/v0',
+              'messagingUrl': 'https://messaging.botpress.cloud',
+              'clientId': '6ebd462e-d4c4-4a85-92c8-a466db63aa24',
+              'enableConversationDeletion': true,
+              'showPoweredBy': true,
+              'className': 'webchatIframe',
+              'containerWidth': '100%25',
+              'layoutWidth': '100%25',
+              'hideWidget': true,
+              'showCloseButton': false,
+              'disableAnimations': true,
+              'closeOnEscape': false,
+              'showConversationsButton': false,
+              'enableTranscriptDownload': false,
+              'stylesheet':'https://webchat-styler-css.botpress.app/prod/code/3fcd3e4e-d5bc-4bf5-8699-14b621b3ada2/v31782/style.css'
+            });
+            window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
+          </script></body>"></iframe>
+    </div>
+  </div>
+  <div class="py-6 bg-white">
+    <div class="text-center">
+      <p>How was your experience?</p>
+      <div class="flex justify-center items-center">
+        <span class="star text-4xl cursor-pointer" data-value="1">&#9733;</span>
+        <span class="star text-4xl cursor-pointer" data-value="2">&#9733;</span>
+        <span class="star text-4xl cursor-pointer" data-value="3">&#9733;</span>
+        <span class="star text-4xl cursor-pointer" data-value="4">&#9733;</span>
+        <span class="star text-4xl cursor-pointer" data-value="5">&#9733;</span>
+      </div>
+      <div class="mt-2 rating-message"></div>
+      <button class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Confirm
+        Rating</button>
+    </div>
+    <div class="mt-6">
+      <h2 class="text-center">Recent Reviews</h2>
+      <ul class="list-none px-0">
+        <li class="text-center">Great experience, very helpful!</li>
+        <li class="text-center">Could be better, had some issues.</li>
+        <li class="text-center">Average service, nothing special.</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.star').click(function () {
+        var value = $(this).data('value');
+        $('.star').removeClass('active');
+        for (var i = 1; i <= value; i++) {
+          $('.star[data-value="' + i + '"]').addClass('active');
+        }
+        $('.stars').attr('data-rating', value);
+        $('.rating-message').text('You rated this ' + value + ' star(s).');
+      });
+
+      $('.confirm-button').click(function () {
+        var rating = $('.stars').attr('data-rating');
+        var message = "You confirmed rating: " + rating + " star(s)";
+        // You can implement further actions here, such as submitting the rating to a server
+        alert(message);
+      });
+    });
+  </script>
+</body>
+
+</html>
