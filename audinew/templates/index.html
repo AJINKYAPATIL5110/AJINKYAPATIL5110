@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Auditorium Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  </head>
+  <body>
+    <header>
+       <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/">Services</a></li>
+                <li><a href="/">Contact us</a></li>
+                <!-- <li></li>
+                <li></li> -->
+            </ul>
+            {% if not msg %}
+            <div class="login">
+              <a href="/login">Login</a>
+              <a href="/admin_page">Admin</a>
+              <a href="/register_page">Register</a>
+          </div>
+          {% else %}
+          <div class="login">
+            <a href="/" class="none"></a>
+            <a href="/" class="none"></a>
+            <a href="/log_out">Log Out</a>
+        </div>
+            {% endif %}
+            
+            
+       </nav>
+
+       <div class="container">
+        <div class="container1">
+            <h1>Welcome to DACOE Auditorium</h1> 
+            <div class="link">
+              <a href="/book_seat" >Book Your Program</a>
+              <a href="/program_details">Program Details</a>
+            </div>
+            
+            
+            
+        </div>
+      </div>
+
+
+      {% if slot_details|length !=0  %}
+            <div id="close" class="close">
+              <a href="/close" onclick="hideElement('hideme','close')" class="fa fa-times close-tab"></a>
+            </div>
+            <div id="hideme" class="table1">
+              
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">SNO</th>
+                            <th scope="col">Program Name</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Branch</th>
+                            <th scope="col">Department ID</th>
+                            <th scope="col">Mobile No</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for all_data1 in slot_details %}
+                        <tr>
+                            <th scope="row">{{loop.index}}</th>
+                            <th scope="row">{{all_data1.p_name}}</th>
+                            <th scope="row">{{all_data1.year}}</th>
+                            <th scope="row">{{all_data1.branch}}</th>
+                            <th scope="row">{{all_data1.d_id}}</th>
+                            <th scope="row">{{all_data1.p_number}}</th>
+                            <th scope="row">{{all_data1.date1}}</th>
+                            <th scope="row">{{all_data1.slot}}</th>
+                            
+                            
+                            <!-- <th scope="row">{{all_data1.password}}</th>
+                            <td>
+                                <a href="/delete1/{{all_data1.SNO}}" onclick="return confirm('Are you sure you want to proceed?');" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                            </td>
+                            
+                            <td><a href="/edit/{{all_data1.SNO}}" type="button"  id="myButton" class="btn btn-primary">Edit</button></td> -->
+                        </tr>
+                        {% endfor %}
+    
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+       
+
+       <div class="container2">
+          <p>
+            <i class="fa fa-map-marker" aria-hidden="true"></i> 
+            Vidyanagar Extn. Banawadi, Karad
+          </p>
+          <p>
+            <i class="fa fa-envelope" aria-hidden="true"></i> 
+            info@gmail.com
+          </p>
+
+          <p>
+            <i class="fa fa-phone" aria-hidden="true"></i> 
+            +1234567899
+          </p>
+       </div>
+    </header>
+
+    <main>
+      <img src="/static/img2.jpg" alt="">
+      <img src="/static/img1.jpg" alt="">
+    </main>
+    
+
+    <footer>
+      <div class="footer">
+          <p>© 2024 Auditorium Booking System. All rights reserved | </p>
+      </div>
+    </footer>
+
+
+    <script>
+      function hideElement(elementId,closeId) {
+            var element = document.getElementById(elementId);
+            var close = document.getElementById(closeId);
+            if (element) {
+                element.style.display = 'none';
+            }
+            if (close) {
+                close.style.display = 'none';
+            }
+        }
+    </script>
+
+  </body>
+</html>

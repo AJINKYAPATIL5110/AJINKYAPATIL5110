@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Program</title>
+    <link rel="stylesheet" href="/static/style1.css">
+   
+</head>
+<body>
+    <div class="container">
+        <form action="/book" method="POST">
+            <h1>Register Your Program</h1>
+            {% if msg %}
+            <div class="alert-danger">
+                {{msg}}
+              </div>
+            {% endif %}
+            <label for="name">Enter the name of program<span>*</span></label>
+            <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
+
+            <label for="role">Select Your Year:<span>*</span></label>
+            <select class="form-select" name="year" id="year" aria-label="Default select example" required>
+                <option selected>FE</option>
+                <option>SE</option>
+                <option>TE</option>
+                <option>BE</option>
+                
+            </select>
+
+            <label for="branch" id="branch-label" class="branch-label">Select Your Department: <span>*</span> </label>
+            <select class="form-select" id="branch-field" name="branch" required>
+                <option value="IT">IT</option>
+                <option value="COMP">COMP</option>
+                <option value="AIDS">AIDS</option>
+                <option value="ENTC">ENTC</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+            </select>
+
+            <label for="password">Enter Your Department Id<span>*</span></label>
+            <input type="password" id="password" name="department_id" placeholder="Enter Your Department ID" required>
+
+            <label for="number">Enter Your Mobile Number<span>*</span></label>
+            <input type="tel" id="number" name="number" placeholder="Enter Your Mobile Number" required>
+
+            <label for="date">Select a Date:</label>
+            <input type="date" id="date" name="date"  required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="container1">
+        {% if msg2 %}
+        <h1 class="title">{{msg2}}</h1>
+        {% endif %}
+        {% if msg1 %}
+        <h1 class="title">Available Slots:</h1>
+        <h3 class="title">Select Your Slots:</h3>
+        {% endif %}
+        
+        {% if slots|length !=0 %}
+        <div class="subcontainer">
+        {% for slots in slots %}
+            <a href="/slot_booking/{{slots.SNO}}" onclick="return confirm('Are you sure to book this slot?')"> {{slots.duration}} </a>
+        {% endfor %}
+        </div>
+        <div class="go_to">
+            <a href="/go_to">Go To Home Page</a>
+        </div>
+        {% endif %}
+            
+            <!-- <a href="/">slot1</a>
+            <a href="/">slot1</a>
+            <a href="/">slot1</a>
+            <a href="/">slot1</a>
+            <a href="/">slot1</a>
+            <a href="/">slot1</a>
+            <a href="/">slot1</a> -->
+
+        
+    </div>
+
+
+    <script>
+        function confirmDelete() {
+            if (confirm("Are you sure you want to delete this item?")) {
+                // User clicked OK, perform delete operation
+                alert("Item deleted!");
+            } else {
+                // User clicked Cancel, do nothing
+                alert("Delete operation canceled.");
+            }
+        }
+    </script>
+</body>
+</html>
